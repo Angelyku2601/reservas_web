@@ -1,3 +1,6 @@
+import.meta.glob([
+'../fonts/**',
+]);
 import axios from "axios";
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
@@ -13,7 +16,7 @@ axios.get("http://localhost:8000/api/user", {
     console.error(e);
 }) 
 
-async function login(event) {
+async function signUp(event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
@@ -22,29 +25,20 @@ async function login(event) {
             withCredentials: true
         });
         
-        const res = await axios.post("http://localhost:8000/api/auth/login", {
+        const res = await axios.post("http://localhost:8000/api/auth/register", {
+            name: formData.get('name'),
+            username: formData.get('username'),
             email: formData.get('email'),
-            password: formData.get('password')
+            password: formData.get('password'),
+            password_confirmation: formData.get('password_confirmation')
         }, {
             withCredentials: true
         });
-        function getCookie(name) {
-            const cookies = document.cookie.split(";");
-            for (let cookie of cookies) {
-                // Elimina espacios al inicio
-                cookie = cookie.trim();
 
-                // Verifica si empieza con el nombre buscado
-                if (cookie.startsWith(name + "=")) {
-                    // Devuelve el valor decodificado
-                    return cookie.substring(name.length + 1);
-                }
-                return null;
-            }
-        }
+        window.location.href = "/login";
     } catch(error) {
         console.error(error);
     }
 }
 
-form.addEventListener("submit", login);
+form.addEventListener("submit", signUp);
