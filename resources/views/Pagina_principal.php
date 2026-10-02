@@ -14,14 +14,14 @@
         }
 
         body {
-            background-color: #f4f4f9;
+            background-color: #030203;
             color: #333;
         }
 
         h1 {
             text-align: center;
             margin-top: 2rem;
-            color: #002B49;
+            color: #E8E8E8;
             font-size: 1.5rem;
         }
 
