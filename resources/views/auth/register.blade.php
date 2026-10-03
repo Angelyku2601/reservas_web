@@ -20,7 +20,38 @@
                     <span class="instruction-text">Completa los siguientes campos para tu registro</span>
                 </div>
                 <div class="steps">
-
+                     <div class="step primary-step">
+                        <span class="step-number primary-step-number">
+                            1
+                        </span>
+                        <span class="step-text">
+                            Nombre completo con apellidos
+                        </span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">
+                            2
+                        </span>
+                        <span class="step-text">
+                            Nombre de usuario de maximo 25 caracteres
+                        </span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">
+                            3
+                        </span>
+                        <span class="step-text">
+                            correo electrónico
+                        </span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">
+                            4
+                        </span>
+                        <span class="step-text">
+                            Contraseña de minimo 8 caracteres
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
