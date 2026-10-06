@@ -6,6 +6,8 @@
 
     <title>Iniciar sesión | Reserva de Laboratorios</title>
 
+    @vite(['resources/js/app.js'])
+
     <style>
         * {
             margin: 0;
@@ -251,26 +253,27 @@
         @endif
 
 
-        <!-- ERRORES DE VALIDACIÓN -->
+       <!-- ERRORES DE VALIDACIÓN -->
 
-        @if($errors->any())
+@if(isset($errors) && $errors->any())
 
-            <div class="error">
+    <div class="error">
 
-                @foreach($errors->all() as $error)
+        @foreach($errors->all() as $error)
 
-                    <p>{{ $error }}</p>
+            <p>{{ $error }}</p>
 
-                @endforeach
+        @endforeach
 
-            </div>
+    </div>
 
-        @endif
+@endif
 
 
         <!-- FORMULARIO -->
 
-        <form method="POST" action="/login">
+        <form id="login_form">
+
 
             @csrf
 

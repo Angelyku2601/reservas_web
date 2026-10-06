@@ -16,4 +16,8 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::get('/pagina-principal', function () {
+    return response()->file(
+        resource_path('views/Pagina_principal.php')
+    );
+})->name('pagina.principal');
