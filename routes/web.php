@@ -21,3 +21,25 @@ Route::get('/pagina-principal', function () {
         resource_path('views/Pagina_principal.php')
     );
 })->name('pagina.principal');
+
+
+Route::get('/reservas/{aula}', function ($aula) {
+
+    $aulas = [
+    'laboratorio-a' => 'Laboratorio de cómputo A',
+    'laboratorio-b' => 'Laboratorio de cómputo B',
+    'laboratorio-c' => 'Laboratorio de cómputo C',
+    'auditorio-p2' => 'Auditorio P2',
+    'auditorio-pb' => 'Auditorio PB',
+];
+
+    if (!array_key_exists($aula, $aulas)) {
+        abort(404);
+    }
+
+    return view('reservas.calendario', [
+        'nombreAula' => $aulas[$aula],
+        'aula' => $aula
+    ]);
+
+})->name('reservas.calendario');
