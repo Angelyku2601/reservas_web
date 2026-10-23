@@ -94,6 +94,7 @@
             <li><a href="#">Laboratorios</a></li>
             <li><a href="#">Mis Reservas</a></li>
             <li><a href="#">Contacto</a></li>
+            <li><a href="perfil.blade.php">perfil</a></li>
         </ul>
     </nav>
 </header>
