@@ -5,41 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario - Facultad de Informática Culiacán</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #eaf2f8 0%, #d8e5f2 100%);
+            color: #0b2545;
+            font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background-color: #020b14;
-            border-bottom: 1px solid #1a2b3c;
-        }
-        .logo {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.95rem;
-            padding: 6px 12px;
-            border-radius: 4px;
-        }
-        nav a:hover, nav a.active {
-            background-color: #16324f;
-        }
-        
-        
+
         .main-container {
             flex: 1;
             max-width: 1000px;
@@ -47,75 +27,78 @@
             margin: 40px auto;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
         }
 
+
         .profile-header-card {
-            background-color: #081624;
-            border: 1px solid #1a2b3c;
-            border-radius: 8px;
-            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 25px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
+            box-shadow: 0 4px 12px rgba(11, 37, 69, 0.05);
         }
 
         .profile-user-info h2 {
-            margin: 0 0 5px 0;
-            color: #4da3ff;
-            font-size: 1.8rem;
+            margin: 0 0 6px 0;
+            color: #0b2545;
+            font-size: 1.6rem;
+            font-weight: bold;
         }
 
         .profile-user-info p {
             margin: 0;
-            color: #8ab4f8;
-            font-size: 1rem;
+            color: #5a6e85;
+            font-size: 0.95rem;
         }
 
 
         .btn-logout {
-            background-color: #8b0000; 
+            background-color: #d93838; 
             color: #ffffff;
-            border: 1px solid #ff4d4d;
+            border: none;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            font-weight: bold;
             text-decoration: none;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.1s;
         }
 
         .btn-logout:hover {
-            background-color: #a80000;
+            background-color: #b82828;
         }
-
 
         .profile-details-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
         }
 
+
         .detail-card {
-            background-color: #081624;
-            border: 1px solid #1a2b3c;
-            border-radius: 8px;
+            background-color: #ffffff;
+            border-radius: 12px;
             padding: 25px;
+            box-shadow: 0 4px 12px rgba(11, 37, 69, 0.05);
         }
 
         .detail-card h3 {
             margin-top: 0;
-            color: #4da3ff;
-            font-size: 1.2rem;
-            border-bottom: 1px solid #1a2b3c;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
+            color: #0b2545;
+            font-size: 1.15rem;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
         }
 
         .profile-field {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
 
         .profile-field:last-child {
@@ -124,42 +107,44 @@
 
         .profile-field label {
             display: block;
-            color: #8ab4f8;
-            margin-bottom: 5px;
-            font-size: 0.85rem;
+            color: #5a6e85;
+            margin-bottom: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .profile-field .value {
-            background-color: #020b14;
-            padding: 10px 12px;
-            border-radius: 4px;
-            border: 1px solid #1a2b3c;
-            color: #e0e0e0;
-            font-size: 1rem;
+            background-color: #f4f8fb;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid #dce5ef;
+            color: #0b2545;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
-    
 
     @include('menu_hamburguesa')
 
     <div class="main-container">
         
+
         <div class="profile-header-card">
             <div class="profile-user-info">
                 <h2>{{ $usuario->nombre }}</h2>
                 <p>{{ $usuario->carrera ?? 'Estudiante de Licenciatura en Informática' }}</p>
             </div>
-            
 
             <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
                 @csrf
                 <button type="submit" class="btn-logout">Cerrar Sesión</button>
             </form>
         </div>
+
 
         <div class="profile-details-grid">
             
@@ -187,7 +172,7 @@
                 </div>
                 <div class="profile-field">
                     <label>Programa Educativo:</label>
-                    <div class="value">{{ $usuario->carrera  }}</div>
+                    <div class="value">{{ $usuario->carrera }}</div>
                 </div>
                 <div class="profile-field">
                     <label>Semestre / Grupo:</label>
